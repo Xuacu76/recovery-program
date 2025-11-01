@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Recovery Program for Jada</title>
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font Configuration -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+        .nav-button {
+            transition: all 0.3s ease;
+            white-space: nowrap; /* Prevents text from wrapping */
+        }
+        .nav-button:not([disabled]):hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .page-content {
+            /* Initial styles for hidden, animated pages */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            display: none; /* Default hidden state, overwritten by JS/inline style */
+        }
+        .page-content.active {
+            opacity: 1;
+            transform: translateY(0);
+            display: block; /* Show active page */
+        }
+        .quiz-option {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .quiz-option:hover {
+            background-color: #e0f2fe; /* blue-100 */
+        }
+        .selected-correct {
+            background-color: #dcfce7 !important; /* green-100 */
+            border-color: #10b981 !important; /* green-500 */
+        }
+        .selected-incorrect {
+            background-color: #fee2e2 !important; /* red-100 */
+            border-color: #ef4444 !important; /* red-500 */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="appContainer" class="w-full max-w-5xl bg-white shadow-2xl rounded-xl p-8 md:p-12 space-y-8">
+
+        <!-- Main Header and Program Title -->
+        <header class="text-center border-b pb-6 border-indigo-100">
+            <h1 class="text-4xl font-extrabold text-indigo-700 tracking-tight">
+                Mental Recovery Program for Jada
+            </h1>
+            <p id="pageSubtitle" class="mt-2 text-xl text-gray-500">
+                Initial Phase: Acceptance and Opportunity
+            </p>
+            <div id="copyMessage" class="mt-4 p-3 bg-green-100 text-green-700 rounded-lg font-semibold hidden" role="alert">
+                Report copied to clipboard!
+            </div>
+            <div id="resetMessage" class="mt-4 p-3 bg-red-100 text-red-700 rounded-lg font-semibold hidden" role="alert">
+                Program reset. All entered information has been cleared.
+            </div>
+        </header>
+
+        <!-- Page Navigation -->
+        <nav class="flex justify-center space-x-1 md:space-x-3 overflow-x-auto pb-2">
+            <button id="nav-1" data-page="1" class="nav-button px-3 py-2 text-xs md:text-sm font-semibold text-white bg-indigo-600 rounded-lg shadow-lg">
+                1. Introduction
+            </button>
+            <button id="nav-2" data-page="2" class="nav-button px-3 py-2 text-xs md:text-sm font-medium text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300">
+                2. Costs & Benefits
+            </button>
+            <button id="nav-3" data-page="3" class="nav-button px-3 py-2 text-xs md:text-sm font-medium text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300">
+                3. Goal Setting
+            </button>
+            <button id="nav-4" data-page="4" class="nav-button px-3 py-2 text-xs md:text-sm font-medium text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300">
+                4. Weekly Plan
+            </button>
+            <button id="nav-5" data-page="5" class="nav-button px-3 py-2 text-xs md:text-sm font-medium text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300">
+                5. Visualization
+            </button>
+            <button id="nav-6" data-page="6" class="nav-button px-3 py-2 text-xs md:text-sm font-medium text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300">
+                6. Mental Quiz
+            </button>
+             <button id="nav-7" data-page="7" class="nav-button px-3 py-2 text-xs md:text-sm font-medium text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300">
+                7. Summary
+            </button>
+        </nav>
+
+        <!-- PAGE CONTENT -->
+
+        <!-- PAGE 1: Introduction - SET AS ACTIVE/VISIBLE BY DEFAULT TO PREVENT BLANK SCREEN -->
+        <div id="page-1" class="page-content active" style="display: block; opacity: 1; transform: translateY(0);">
+            <section class="mt-8 space-y-6 text-gray-700 leading-relaxed">
+                <h2 class="text-2xl font-bold text-indigo-800 border-b pb-2">
+                    Injury as Part of an Athletic Career
+                </h2>
+
+                <div class="bg-indigo-50 p-6 rounded-lg border-l-4 border-indigo-500 shadow-inner">
+                    <p class="text-lg">
+                        In the journey of any professional athlete, injuries are not a failure, but an inherent and almost inevitable part of dedication at the highest level. They are forced pauses, yes, but also **turning points** that redefine mindset and career. How you manage this time off truly distinguishes resilient athletes. This phase is a crucial opportunity to work on strengths that are not physical, but purely mental.
+                    </p>
+                </div>
+
+                <h2 class="text-2xl font-bold text-indigo-800 border-b pb-2 pt-4">
+                    Turning Downtime into an Investment
+                </h2>
+
+                <div class="bg-white p-6 rounded-lg shadow-xl">
+                    <p class="text-lg">
+                        The best strategy for facing a recovery period is to **redirect energy and focus**. This pause from intense physical training becomes a valuable resource for personal and professional investment.
+                    </p>
+
+                    <p class="mt-4 text-lg font-semibold text-indigo-600">
+                        There are two main paths to leverage this investment:
+                    </p>
+
+                    <ul class="list-disc pl-8 mt-3 space-y-3">
+                        <li class="text-lg">
+                            <strong class="text-indigo-800">Personal Growth:</strong> Dedicate time to that hobby, language, or entirely new skill you've always wanted to learn. This fosters balance, reduces stress, and expands your identity beyond the sport.
+                        </li>
+                        <li class="text-lg">
+                            <strong class="text-indigo-800">Psychological and Strategic Improvement:</strong> Focus on mental techniques and strategies. This can be the perfect time to master skills like visualization, arousal control, goal setting, and mental resilience. These are the tools that will allow you to return to the field not just recovered, but also **smarter and mentally stronger**.
+                        </li>
+                    </ul>
+                    <p class="mt-5 text-lg">
+                        The goal of this program is to help you structure this time so that your return is the best of your career.
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- PAGE 2: Costs and Benefits -->
+        <div id="page-2" class="page-content">
+            <section class="mt-8 space-y-6 text-gray-700 leading-relaxed">
+                <h2 class="text-3xl font-bold text-indigo-800 border-b pb-3">
+                    2. Decision Analysis: Costs vs. Benefits
+                </h2>
+
+                <!-- Definition of Costs and Benefits -->
+                <div class="bg-indigo-50 p-6 rounded-lg border-l-4 border-indigo-500 shadow-inner">
+                    <p class="text-xl font-semibold text-indigo-700 mb-3">
+                        Key Definitions
+                    </p>
+                    <p class="text-lg mb-4">
+                        <strong class="text-indigo-800">Benefits:</strong> These are the positive gains, favorable outcomes, and rewards you get from following a course of action, both immediate (short-term) and future (long-term).
+                    </p>
+                    <p class="text-lg">
+                        <strong class="text-indigo-800">Costs:</strong> These are the sacrifices, efforts, losses, or negative consequences (physical, emotional, time) associated with a decision. They can be immediate or manifest much later.
+                    </p>
+                </div>
+
+                <p class="text-lg">
+                    In rehabilitation, every action you take (or fail to take) has its own balance of costs and benefits, and it is crucial to see the difference between the **effort of today** and the **reward of tomorrow**.
+                </p>
+
+                <h3 class="text-2xl font-bold text-indigo-800 border-b pb-2 pt-4">
+                    The Impact Table: Choose Your Path
+                </h3>
+
+                <!-- Consequence Table -->
+                <div class="overflow-x-auto shadow-xl rounded-lg border border-gray-200">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-indigo-600 text-white">
+                            <tr>
+                                <th class="px-3 py-3 text-left text-sm font-bold uppercase tracking-wider w-1/4">
+                                    Rehabilitation Scenario
+                                </th>
+                                <th class="px-3 py-3 text-left text-sm font-bold uppercase tracking-wider w-1/4">
+                                    Short-Term Cost (Today)
+                                </th>
+                                <th class="px-3 py-3 text-left text-sm font-bold uppercase tracking-wider w-1/4">
+                                    Long-Term Benefit (Future)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <!-- SCENARIO 1: Ideal -->
+                            <tr class="hover:bg-green-50 transition duration-150">
+                                <td class="px-3 py-4 text-lg font-bold text-green-700">
+                                    1. Disciplined Rehabilitation
+                                </td>
+                                <td class="px-3 py-4 text-base text-gray-800">
+                                    Discomfort, time invested, patience, occasional frustration.
+                                </td>
+                                <td class="px-3 py-4 text-base text-gray-800">
+                                    Complete and optimal recovery, **minimized risk of recurrence**, maximum confidence, early and successful return.
+                                </td>
+                            </tr>
+                            <!-- SCENARIO 2: Medium -->
+                            <tr class="hover:bg-yellow-50 transition duration-150">
+                                <td class="px-3 py-4 text-lg font-bold text-yellow-700">
+                                    2. Irregular/Incomplete Rehabilitation
+                                </td>
+                                <td class="px-3 py-4 text-base text-gray-800">
+                                    Less immediate effort, more free time, avoids constant exercise discomfort.
+                                </td>
+                                <td class="px-3 py-4 text-base text-gray-800">
+                                    Partial or slow recovery, **critical increase in recurrence risk** upon return, suboptimal performance, prolonged frustration.
+                                </td>
+                            </tr>
+                            <!-- SCENARIO 3: Worst -->
+                            <tr class="hover:bg-red-50 transition duration-150">
+                                <td class="px-3 py-4 text-lg font-bold text-red-700">
+                                    3. Failure to do Rehabilitation
+                                </td>
+                                <td class="px-3 py-4 text-base text-gray-800">
+                                    Maximum free time and zero pain associated with exercises.
+                                </td>
+                                <td class="px-3 py-4 text-base text-gray-800">
+                                    Permanent damage, **end of athletic career**, chronic pain, inability to return to activity.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-8 bg-indigo-100 p-6 rounded-lg border-l-4 border-indigo-600">
+                    <p class="text-xl italic text-indigo-900">
+                        Today's discipline is the guarantee of tomorrow's success. Choosing Scenario 1 requires mental effort but ensures the best version of your future.
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- PAGE 3: GOAL SETTING -->
+        <div id="page-3" class="page-content">
+            <section class="mt-8 space-y-8 text-gray-700 leading-relaxed">
+                <h2 class="text-3xl font-extrabold text-indigo-800 border-b pb-3 text-center">
+                    3. GOAL SETTING AS PREPARATION FOR RETURN TO PLAY
+                </h2>
+
+                <p class="text-lg text-center text-gray-600">
+                    Define your goals to maintain motivation and structure your path back. Outcome Goals are the final targets; Performance Goals are the concrete steps you will take.
+                </p>
+
+                <!-- 6 Goals Container: Responsive Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    <!-- Goal 1: Outcome - Long Term -->
+                    <div class="bg-blue-50 p-5 rounded-xl shadow-lg border-t-4 border-blue-600 space-y-2">
+                        <p class="text-xl font-bold text-blue-800">OUTCOME GOAL</p>
+                        <p class="text-lg font-semibold text-gray-600">LONG TERM</p>
+                        <p class="text-sm font-medium text-gray-500">Estimated DATE:</p>
+                        <input id="goal-1-date" type="date" class="w-full p-2 border border-blue-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        <textarea id="goal-1-text" rows="3" placeholder="Write your goal here..." class="w-full p-3 border border-blue-300 rounded-lg mt-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    </div>
+
+                    <!-- Goal 2: Outcome - Medium Term -->
+                    <div class="bg-blue-50 p-5 rounded-xl shadow-lg border-t-4 border-blue-600 space-y-2">
+                        <p class="text-xl font-bold text-blue-800">OUTCOME GOAL</p>
+                        <p class="text-lg font-semibold text-gray-600">MEDIUM TERM</p>
+                        <p class="text-sm font-medium text-gray-500">Estimated DATE:</p>
+                        <input id="goal-2-date" type="date" class="w-full p-2 border border-blue-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        <textarea id="goal-2-text" rows="3" placeholder="Write your goal here..." class="w-full p-3 border border-blue-300 rounded-lg mt-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    </div>
+
+                    <!-- Goal 3: Outcome - Short Term -->
+                    <div class="bg-blue-50 p-5 rounded-xl shadow-lg border-t-4 border-blue-600 space-y-2">
+                        <p class="text-xl font-bold text-blue-800">OUTCOME GOAL</p>
+                        <p class="text-lg font-semibold text-gray-600">SHORT TERM</p>
+                        <p class="text-sm font-medium text-gray-500">Estimated DATE:</p>
+                        <input id="goal-3-date" type="date" class="w-full p-2 border border-blue-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        <textarea id="goal-3-text" rows="3" placeholder="Write your goal here..." class="w-full p-3 border border-blue-300 rounded-lg mt-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    </div>
+
+                    <!-- Visual separator -->
+                    <div class="lg:col-span-3 h-px bg-gray-200 my-2"></div>
+
+                    <!-- Goal 4: Performance 1 -->
+                    <div class="bg-green-50 p-5 rounded-xl shadow-lg border-t-4 border-green-600 space-y-2">
+                        <p class="text-xl font-bold text-green-800">1st PERFORMANCE GOAL</p>
+                        <p class="text-sm font-medium text-gray-500">Target DATE:</p>
+                        <input id="goal-4-date" type="date" class="w-full p-2 border border-green-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                        <textarea id="goal-4-text" rows="3" placeholder="Write your goal here..." class="w-full p-3 border border-green-300 rounded-lg mt-2 focus:ring-green-500 focus:border-green-500"></textarea>
+                    </div>
+
+                    <!-- Goal 5: Performance 2 -->
+                    <div class="bg-green-50 p-5 rounded-xl shadow-lg border-t-4 border-green-600 space-y-2">
+                        <p class="text-xl font-bold text-green-800">2nd PERFORMANCE GOAL</p>
+                        <p class="text-sm font-medium text-gray-500">Target DATE:</p>
+                        <input id="goal-5-date" type="date" class="w-full p-2 border border-green-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                        <textarea id="goal-5-text" rows="3" placeholder="Write your goal here..." class="w-full p-3 border border-green-300 rounded-lg mt-2 focus:ring-green-500 focus:border-green-500"></textarea>
+                    </div>
+
+                    <!-- Goal 6: Performance 3 -->
+                    <div class="bg-green-50 p-5 rounded-xl shadow-lg border-t-4 border-green-600 space-y-2">
+                        <p class="text-xl font-bold text-green-800">3rd PERFORMANCE GOAL</p>
+                        <p class="text-sm font-medium text-gray-500">Target DATE:</p>
+                        <input id="goal-6-date" type="date" class="w-full p-2 border border-green-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                        <textarea id="goal-6-text" rows="3" placeholder="Write your goal here..." class="w-full p-3 border border-green-300 rounded-lg mt-2 focus:ring-green-500 focus:border-green-500"></textarea>
+                    </div>
+
+                </div>
+
+            </section>
+        </div>
+
+        <!-- PAGE 4: WEEKLY WORK PLAN -->
+        <div id="page-4" class="page-content">
+            <section class="mt-8 space-y-8 text-gray-700 leading-relaxed">
+                <h2 class="text-3xl font-extrabold text-indigo-800 border-b pb-3 text-center">
+                    4. WEEKLY WORK PLAN: WHAT YOU WILL DO
+                </h2>
+
+                <p class="text-lg text-center text-gray-600">
+                    Detail the daily activities for physical rehabilitation, mental training, and personal growth, ensuring they align with your performance goals.
+                </p>
+
+                <!-- Weekly Plan Container: Responsive Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+                    <!-- Monday -->
+                    <div class="bg-gray-100 p-4 rounded-xl shadow-lg border-l-4 border-indigo-500 space-y-2">
+                        <p class="text-lg font-bold text-indigo-800">PLAN: MONDAY</p>
+                        <p class="text-sm font-medium text-gray-500">DATE:</p>
+                        <input id="day-1-date" type="date" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                        <textarea id="day-1-text" rows="4" placeholder="Rehab, study, visualization..." class="w-full p-3 border border-gray-300 rounded-lg mt-2 text-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                    </div>
+
+                    <!-- Tuesday -->
+                    <div class="bg-gray-100 p-4 rounded-xl shadow-lg border-l-4 border-indigo-500 space-y-2">
+                        <p class="text-lg font-bold text-indigo-800">PLAN: TUESDAY</p>
+                        <p class="text-sm font-medium text-gray-500">DATE:</p>
+                        <input id="day-2-date" type="date" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                        <textarea id="day-2-text" rows="4" placeholder="Rehab, study, visualization..." class="w-full p-3 border border-gray-300 rounded-lg mt-2 text-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                    </div>
+
+                    <!-- Wednesday -->
+                    <div class="bg-gray-100 p-4 rounded-xl shadow-lg border-l-4 border-indigo-500 space-y-2">
+                        <p class="text-lg font-bold text-indigo-800">PLAN: WEDNESDAY</p>
+                        <p class="text-sm font-medium text-gray-500">DATE:</p>
+                        <input id="day-3-date" type="date" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                        <textarea id="day-3-text" rows="4" placeholder="Rehab, study, visualization..." class="w-full p-3 border border-gray-300 rounded-lg mt-2 text-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                    </div>
+
+                    <!-- Thursday -->
+                    <div class="bg-gray-100 p-4 rounded-xl shadow-lg border-l-4 border-indigo-500 space-y-2">
+                        <p class="text-lg font-bold text-indigo-800">PLAN: THURSDAY</p>
+                        <p class="text-sm font-medium text-gray-500">DATE:</p>
+                        <input id="day-4-date" type="date" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                        <textarea id="day-4-text" rows="4" placeholder="Rehab, study, visualization..." class="w-full p-3 border border-gray-300 rounded-lg mt-2 text-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                    </div>
+                    
+                    <!-- Friday -->
+                    <div class="bg-gray-100 p-4 rounded-xl shadow-lg border-l-4 border-indigo-500 space-y-2">
+                        <p class="text-lg font-bold text-indigo-800">PLAN: FRIDAY</p>
+                        <p class="text-sm font-medium text-gray-500">DATE:</p>
+                        <input id="day-5-date" type="date" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                        <textarea id="day-5-text" rows="4" placeholder="Rehab, study, visualization..." class="w-full p-3 border border-gray-300 rounded-lg mt-2 text-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                    </div>
+
+                    <!-- Saturday -->
+                    <div class="bg-gray-100 p-4 rounded-xl shadow-lg border-l-4 border-indigo-500 space-y-2">
+                        <p class="text-lg font-bold text-indigo-800">PLAN: SATURDAY</p>
+                        <p class="text-sm font-medium text-gray-500">DATE:</p>
+                        <input id="day-6-date" type="date" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                        <textarea id="day-6-text" rows="4" placeholder="Active rest day or mental focus..." class="w-full p-3 border border-gray-300 rounded-lg mt-2 text-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                    </div>
+
+                    <!-- Sunday -->
+                    <div class="bg-gray-100 p-4 rounded-xl shadow-lg border-l-4 border-indigo-500 space-y-2">
+                        <p class="text-lg font-bold text-indigo-800">PLAN: SUNDAY</p>
+                        <p class="text-sm font-medium text-gray-500">DATE:</p>
+                        <input id="day-7-date" type="date" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                        <textarea id="day-7-text" rows="4" placeholder="Weekly review and planning for next week..." class="w-full p-3 border border-gray-300 rounded-lg mt-2 text-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                    </div>
+
+                </div>
+
+            </section>
+        </div>
+
+        <!-- PAGE 5: VISUALIZATION -->
+        <div id="page-5" class="page-content">
+            <section class="mt-8 space-y-8 text-gray-700 leading-relaxed">
+                <h2 class="text-3xl font-extrabold text-indigo-800 border-b pb-3 text-center">
+                    5. MENTAL PRACTICE: VISUALIZATION EXERCISES
+                </h2>
+
+                <p class="text-lg text-center text-gray-600">
+                    Use these exercises, practicing **one of them every two days** during your first few weeks. This will help maintain your mental connection to movement and speed up the healing process. Find a quiet place and sit comfortably.
+                </p>
+
+                <!-- Exercise 1: Internal Healing -->
+                <div class="bg-purple-50 p-6 rounded-xl shadow-lg border-l-4 border-purple-600">
+                    <h3 class="text-2xl font-bold text-purple-800 mb-3">
+                        Exercise 1: Internal Healing (Biological Visualization)
+                    </h3>
+                    <p class="text-lg mb-3">
+                        <strong class="font-semibold">Objective:</strong> Accelerate injury repair and reduce anxiety about physical status.
+                    </p>
+                    <ol class="list-decimal pl-6 space-y-3 text-gray-700">
+                        <li>Close your eyes and relax your breathing, feeling the air move in and out slowly.</li>
+                        <li>Direct your attention to the injured area. Not to the pain, but to the area itself.</li>
+                        <li>Visualize the area with a bright color, like gold or healing blue, representing your body's energy.</li>
+                        <li>Imagine strong, active repair cells arriving at the area like an efficient construction crew. See how they clean, strengthen, and rebuild the damaged tissues.</li>
+                        <li>Feel a sensation of gentle warmth and vibration in that area, knowing that every breath is feeding and accelerating your internal recovery.</li>
+                        <li>End with the image of the area being completely strong and restored.</li>
+                    </ol>
+                </div>
+
+                <!-- Exercise 2: Technical Readjustment -->
+                <div class="bg-yellow-50 p-6 rounded-xl shadow-lg border-l-4 border-yellow-600">
+                    <h3 class="text-2xl font-bold text-yellow-800 mb-3">
+                        Exercise 2: Technical Readjustment (Perfect Movement Visualization)
+                    </h3>
+                    <p class="text-lg mb-3">
+                        <strong class="font-semibold">Objective:</strong> Maintain muscle memory and refine technique without physical stress.
+                    </p>
+                    <ol class="list-decimal pl-6 space-y-3 text-gray-700">
+                        <li>Choose a specific skill or technical movement from your sport (a pass, a jump, a strike, etc.).</li>
+                        <li>Mentally relive your best execution of that movement. Watch yourself in a "mental movie" in both first person (through your eyes) and third person (watching yourself from outside).</li>
+                        <li>Feel every detail: the texture of the ground, the weight of your body, the sound you make. Perform the perfect movement, feeling the contraction and relaxation of the correct muscles.</li>
+                        <li>Focus on the injured leg or arm, imagining it strong, stable, and pain-free as you execute the movement fluently.</li>
+                        <li>Repeat the sequence three times, pausing between each repetition to "clear" your mind.</li>
+                    </ol>
+                </div>
+
+                <!-- Exercise 3: Return to the Field -->
+                <div class="bg-green-50 p-6 rounded-xl shadow-lg border-l-4 border-green-600">
+                    <h3 class="text-2xl font-bold text-green-800 mb-3">
+                        Exercise 3: Return to the Field (Reappearance Visualization)
+                    </h3>
+                    <p class="text-lg mb-3">
+                        <strong class="font-semibold">Objective:</strong> Build confidence and reduce anxiety associated with fear of recurrence or performance.
+                    </p>
+                    <ol class="list-decimal pl-6 space-y-3 text-gray-700">
+                        <li>Imagine the date of your return to the field or competition. Focus on the environment: the light, the sound of the fans, the smell of the grass/court.</li>
+                        <li>See yourself warming up, feeling strong, light, and completely confident in your recovered body.</li>
+                        <li>Visualize a high-pressure game situation. A key moment in the game where your participation is decisive.</li>
+                        <li>Execute that movement with your recovered body. Feel the joy and satisfaction of achieving the successful outcome. Do not dwell on errors or doubts.</li>
+                        <li>End the exercise by feeling the positive emotion of a successful performance and gratitude for the strength of your body.</li>
+                    </ol>
+                </div>
+                
+            </section>
+        </div>
+
+        <!-- PAGE 6: INTERACTIVE QUIZ -->
+        <div id="page-6" class="page-content">
+            <section class="mt-8 space-y-8 text-gray-700 leading-relaxed">
+                <h2 class="text-3xl font-extrabold text-indigo-800 border-b pb-3 text-center">
+                    6. INTERACTIVE PSYCHOLOGICAL REINFORCEMENT: TEST YOUR MIND!
+                </h2>
+
+                <p class="text-lg text-center text-gray-600">
+                    Answer these didactic questions on Resilience, Visualization, and Emotional Management. You will receive an immediate explanation to reinforce your learning.
+                </p>
+
+                <!-- Quiz Container -->
+                <div id="quizContainer" class="space-y-6">
+                    <!-- Questions will be injected here by JavaScript -->
+                </div>
+                
+                <div class="flex justify-center pt-4">
+                    <button id="nextQuestionButton" class="px-8 py-3 text-lg font-bold text-white bg-indigo-500 rounded-xl shadow-lg hover:bg-indigo-600 transition duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-300" style="display: none;">
+                        Next Question →
+                    </button>
+                    <p id="quizFinishedMessage" class="text-xl font-bold text-green-700 p-3" style="display: none;">
+                        Quiz completed! Excellent work!
+                    </p>
+                </div>
+
+            </section>
+        </div>
+        <!-- END PAGE 6 -->
+        
+        <!-- PAGE 7: SUMMARY REPORT (NEW PAGE) -->
+        <div id="page-7" class="page-content">
+            <section class="mt-8 space-y-8 text-gray-700 leading-relaxed">
+                <h2 class="text-3xl font-extrabold text-indigo-800 border-b pb-3 text-center">
+                    7. PROGRAM SUMMARY REPORT
+                </h2>
+                
+                <p class="text-lg text-center text-gray-600">
+                    Review your progress below. Click the 'Copy Report' button to easily send this summary to your coach or trainer.
+                </p>
+
+                <div id="summaryContent" class="bg-gray-50 p-6 rounded-xl shadow-inner border border-gray-200">
+                    <!-- Summary content generated by JavaScript -->
+                    <p class="text-center text-gray-500 italic">Click 'Next Step' to generate the report.</p>
+                </div>
+
+                <div class="flex justify-center pt-4">
+                    <button id="copyReportButton" onclick="copySummary()" class="px-8 py-3 text-lg font-bold text-white bg-green-500 rounded-xl shadow-lg hover:bg-green-600 transition duration-300 focus:outline-none focus:ring-4 focus:ring-green-300">
+                        Copy Report
+                    </button>
+                </div>
+
+            </section>
+        </div>
+        <!-- END PAGE 7 -->
+
+
+        <!-- Bottom Navigation and Utility Buttons -->
+        <div class="flex flex-col sm:flex-row justify-between items-center mt-10 pt-6 border-t border-indigo-100 space-y-4 sm:space-y-0">
+            <!-- Reset Button (Left) -->
+            <button id="resetButton" class="px-6 py-3 text-lg font-bold text-red-600 bg-red-100 rounded-xl shadow-md hover:bg-red-200 transition duration-300 focus:outline-none focus:ring-4 focus:ring-red-300 w-full sm:w-auto">
+                Reset Program
+            </button>
+
+            <!-- Navigation Buttons (Center) -->
+            <div class="flex space-x-4">
+                <button id="prevPageButton" class="px-6 py-3 text-lg font-bold text-gray-600 bg-gray-200 rounded-xl shadow-md hover:bg-gray-300 transition duration-300 focus:outline-none focus:ring-4 focus:ring-gray-300" disabled>
+                    ← Previous
+                </button>
+                <button id="nextPageButton" class="px-6 py-3 text-lg font-bold text-white bg-indigo-500 rounded-xl shadow-lg hover:bg-indigo-600 transition duration-300 focus:outline-none focus:ring-4 focus:ring-indigo-300">
+                    Next Step →
+                </button>
+            </div>
+            
+            <!-- Removed Save Button as requested -->
+        </div>
+
+    </div>
+
+    <script>
+        // Page Navigation Logic in JavaScript
+        const pages = [
+            { id: 'page-1', subtitle: 'Initial Phase: Acceptance and Opportunity' },
+            { id: 'page-2', subtitle: 'Decision Analysis: Costs vs. Benefits' },
+            { id: 'page-3', subtitle: 'Planning: Goals for Return to Play' },
+            { id: 'page-4', subtitle: 'Execution: Weekly Work Plan' },
+            { id: 'page-5', subtitle: 'Mental Practice: Visualization Exercises' },
+            { id: 'page-6', subtitle: 'Interactive Psychological Reinforcement (Quiz)' },
+            { id: 'page-7', subtitle: 'Program Summary and Shareable Report' }, // NEW PAGE
+        ];
+
+        let currentPage = 1;
+        let quizAnswers = []; // Stores { question, selectedText, isCorrect } for the summary
+
+        const prevButton = document.getElementById('prevPageButton');
+        const nextButton = document.getElementById('nextPageButton');
+        const resetButton = document.getElementById('resetButton');
+        const subtitleElement = document.getElementById('pageSubtitle');
+        const navButtons = document.querySelectorAll('.nav-button');
+        const allContentPages = document.querySelectorAll('.page-content');
+        const copyMessage = document.getElementById('copyMessage');
+        const resetMessage = document.getElementById('resetMessage');
+        const summaryContentDiv = document.getElementById('summaryContent');
+        
+        // --- Quiz Data (Page 6) ---
+        const quizData = [
+            // Resilience
+            {
+                question: "What is the best mental approach to maintaining Resilience during a long rehabilitation?",
+                options: [
+                    { text: "Focusing only on the total time remaining until I can compete again.", isCorrect: false, explanation: "Focusing only on the distant final goal generates anxiety. It is better to break the process into small, manageable goals." },
+                    { text: "Viewing the injury as an opportunity to develop a new mental or physical skill.", isCorrect: true, explanation: "Correct! Resilience involves reframing setbacks. Seeing the injury as a productive pause to improve other areas (mental toughness, technique, or knowledge) boosts your return." },
+                    { text: "Constantly comparing my progress with other injured athletes.", isCorrect: false, explanation: "Comparing yourself to others is a path to frustration. Every injury and body is unique. The focus should be on your own work plan." },
+                    { text: "Minimizing the injury and hoping the body will heal on its own with little effort.", isCorrect: false, explanation: "Minimizing the problem leads to Scenario 3 (Costs Table). Rehabilitation requires effort and disciplined commitment." }
+                ],
+                topic: "Resilience"
+            },
+            // Emotional Management
+            {
+                question: "If Jada feels frustration or sadness about not being able to train, what is the best emotional management strategy?",
+                options: [
+                    { text: "Suppressing those emotions and pretending everything is fine so as not to worry anyone.", isCorrect: false, explanation: "Suppressing emotions can lead to mental 'burnout'. It is better to acknowledge and express those feelings healthily." },
+                    { text: "Acknowledging the emotion, accepting its validity, and redirecting energy to controllable tasks (rehabilitation).", isCorrect: true, explanation: "Correct! Acceptance is the first step. Then, transform that frustration into motivation for the tasks you CAN control, like your rehabilitation exercises." },
+                    { text: "Blaming myself for the injury and skipping rehabilitation for a day.", isCorrect: false, explanation: "Blame is unproductive. Injuries happen. Skipping rehab only delays the final goal." },
+                    { text: "Isolating myself from teammates to avoid thinking about the sport.", isCorrect: false, explanation: "Social support is vital. Staying connected with the team and the sport, even from the sidelines, helps maintain athletic identity and motivation." }
+                ],
+                topic: "Emotional Management"
+            },
+            // Visualization
+            {
+                question: "What element is CRUCIAL for visualization to be most effective in rehabilitation?",
+                options: [
+                    { text: "Doing it quickly to move on to the next task of the day.", isCorrect: false, explanation: "Visualization requires full concentration and calmness. Quality (sensations, details) is more important than speed." },
+                    { text: "Including all possible sensations: how the action feels, looks, and sounds.", isCorrect: true, explanation: "Correct! Using all senses (visual, auditory, kinesthetic or *feeling*) makes the mental experience more vivid, and the brain registers it as near-real (implicit practice)." },
+                    { text: "Only visualizing the injured leg/arm in perfect condition.", isCorrect: false, explanation: "It is important to visualize the WHOLE body in successful motion, ensuring the injured part works integrated and pain-free. This reinforces general confidence." },
+                    { text: "Only visualizing the moment of winning the next competition.", isCorrect: false, explanation: "While good, it's more important to visualize the PROCESS (training, rehab, perfect technique) that leads to victory. Focus on performance, not just the outcome." }
+                ],
+                topic: "Visualization"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        const quizContainer = document.getElementById('quizContainer');
+        const nextQuestionButton = document.getElementById('nextQuestionButton');
+        const quizFinishedMessage = document.getElementById('quizFinishedMessage');
+
+        function renderQuestion(index) {
+            quizContainer.innerHTML = '';
+            quizFinishedMessage.style.display = 'none';
+            nextQuestionButton.style.display = 'none';
+
+            if (index >= quizData.length) {
+                quizFinishedMessage.style.display = 'block';
+                return;
+            }
+
+            const data = quizData[index];
+
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'bg-white p-6 rounded-xl shadow-xl border-t-4 border-indigo-500 space-y-4';
+            questionDiv.innerHTML = `
+                <p class="text-sm font-semibold text-indigo-500 uppercase">${data.topic}</p>
+                <h3 class="text-xl font-bold text-gray-800">${index + 1}. ${data.question}</h3>
+                <div id="optionsContainer-${index}" class="space-y-3">
+                    <!-- Options injected here -->
+                </div>
+                <div id="explanation-${index}" class="mt-4 p-4 rounded-lg bg-green-50 border border-green-300 text-sm text-gray-700 font-medium hidden">
+                    <!-- Explanation displayed here -->
+                </div>
+            `;
+            quizContainer.appendChild(questionDiv);
+
+            const optionsContainer = document.getElementById(`optionsContainer-${index}`);
+            const explanationDiv = document.getElementById(`explanation-${index}`);
+            
+            data.options.forEach((option, optionIndex) => {
+                const optionButton = document.createElement('button');
+                optionButton.className = 'quiz-option w-full text-left p-3 border border-gray-300 rounded-lg text-lg text-gray-800 focus:outline-none';
+                optionButton.textContent = option.text;
+                // Store the full option object for easy retrieval
+                optionButton.dataset.optionData = JSON.stringify({
+                    text: option.text,
+                    isCorrect: option.isCorrect,
+                    question: data.question
+                });
+                
+                optionButton.addEventListener('click', () => handleAnswer(optionButton, index, option));
+                optionsContainer.appendChild(optionButton);
+            });
+            
+            // Check if the question was already answered and highlight it
+            const storedAnswer = quizAnswers.find(a => a.question === data.question);
+            if (storedAnswer) {
+                const selectedOptionButton = Array.from(optionsContainer.children).find(btn => btn.textContent === storedAnswer.selectedText);
+                if (selectedOptionButton) {
+                    // Replay the handleAnswer logic visually
+                    const options = optionsContainer.querySelectorAll('.quiz-option');
+                    options.forEach(btn => {
+                        btn.disabled = true;
+                        const optionData = JSON.parse(btn.dataset.optionData);
+                        if (optionData.isCorrect) {
+                            btn.classList.add('selected-correct', 'font-bold');
+                            if (btn !== selectedOptionButton) {
+                                btn.classList.add('opacity-70');
+                            }
+                        } else if (btn === selectedOptionButton) {
+                            btn.classList.add('selected-incorrect');
+                        }
+                    });
+                    
+                    // Show the explanation of the selected option
+                    const selectedExplanation = data.options.find(o => o.text === storedAnswer.selectedText).explanation;
+                    explanationDiv.innerHTML = `<span class="font-extrabold text-green-700">Answer:</span> ${selectedExplanation}`;
+                    explanationDiv.style.display = 'block';
+                    
+                    if (index < quizData.length - 1) {
+                         nextQuestionButton.textContent = 'Next Question →';
+                         nextQuestionButton.style.display = 'block';
+                    } else {
+                         quizFinishedMessage.style.display = 'block';
+                    }
+                }
+            }
+
+        }
+
+        function handleAnswer(selectedButton, questionIndex, selectedOption) {
+            // Disable all option buttons for this question
+            const options = document.getElementById(`optionsContainer-${questionIndex}`).querySelectorAll('.quiz-option');
+            options.forEach(btn => btn.disabled = true);
+
+            const explanationDiv = document.getElementById(`explanation-${questionIndex}`);
+            
+            // Store the answer
+            const answerIndex = quizAnswers.findIndex(a => a.question === quizData[questionIndex].question);
+            const newAnswer = {
+                question: quizData[questionIndex].question,
+                selectedText: selectedOption.text,
+                isCorrect: selectedOption.isCorrect
+            };
+
+            if (answerIndex === -1) {
+                quizAnswers.push(newAnswer);
+            } else {
+                quizAnswers[answerIndex] = newAnswer;
+            }
+            
+            // Determine if correct and apply styles
+            if (selectedOption.isCorrect) {
+                selectedButton.classList.add('selected-correct', 'font-bold');
+            } else {
+                selectedButton.classList.add('selected-incorrect');
+                // Highlight the correct answer
+                options.forEach(btn => {
+                    const optionData = JSON.parse(btn.dataset.optionData);
+                    if (optionData.isCorrect) {
+                        btn.classList.add('selected-correct', 'font-bold', 'opacity-70');
+                    }
+                });
+            }
+
+            // Show the explanation
+            explanationDiv.innerHTML = `
+                <span class="font-extrabold text-green-700">Answer:</span> ${selectedOption.explanation}
+            `;
+            explanationDiv.style.display = 'block';
+            explanationDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Show the Next Question button
+            if (questionIndex < quizData.length - 1) {
+                nextQuestionButton.textContent = 'Next Question →';
+                nextQuestionButton.style.display = 'block';
+            } else {
+                // It's the last question
+                nextQuestionButton.style.display = 'none';
+                quizFinishedMessage.style.display = 'block';
+            }
+        }
+
+        nextQuestionButton.addEventListener('click', () => {
+            currentQuestionIndex++;
+            updatePage(currentPage); // Re-render the quiz page for the next question
+        });
+
+        // --- End Quiz Logic ---
+        
+        // --- Data Collection and Summary Logic (Page 7) ---
+
+        function collectData() {
+            const data = {};
+
+            // 1. Collect Goals (Page 3)
+            data.goals = [];
+            const goalLabels = ["Long Term Outcome Goal", "Medium Term Outcome Goal", "Short Term Outcome Goal", 
+                                "1st Performance Goal", "2nd Performance Goal", "3rd Performance Goal"];
+            for (let i = 1; i <= 6; i++) {
+                const text = document.getElementById(`goal-${i}-text`).value.trim();
+                const date = document.getElementById(`goal-${i}-date`).value;
+                if (text || date) {
+                    data.goals.push({
+                        label: goalLabels[i - 1],
+                        text: text,
+                        date: date
+                    });
+                }
+            }
+
+            // 2. Collect Weekly Plan (Page 4)
+            data.weeklyPlan = [];
+            const dayLabels = ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"];
+            for (let i = 1; i <= 7; i++) {
+                const text = document.getElementById(`day-${i}-text`).value.trim();
+                const date = document.getElementById(`day-${i}-date`).value;
+                if (text || date) {
+                    data.weeklyPlan.push({
+                        day: dayLabels[i - 1],
+                        date: date,
+                        plan: text
+                    });
+                }
+            }
+
+            // 3. Collect Quiz Answers
+            data.quizResults = quizAnswers;
+            
+            return data;
+        }
+        
+        function renderSummary() {
+            const data = collectData();
+            let html = '';
+            let textReport = "--- JADA'S MENTAL RECOVERY PROGRAM REPORT ---\n\n";
+
+            // --- GOALS SUMMARY ---
+            if (data.goals.length > 0) {
+                html += '<h3 class="text-xl font-bold text-indigo-700 mb-3 border-b pb-1">3. Goal Setting Summary</h3>';
+                textReport += "3. GOAL SETTING SUMMARY\n";
+                data.goals.forEach(g => {
+                    const dateText = g.date ? ` (Target: ${g.date})` : '';
+                    const goalText = g.text || "N/A (Goal not set)";
+                    html += `<p class="ml-2 mt-1"><strong class="text-indigo-900">${g.label}:</strong> ${goalText}${dateText}</p>`;
+                    textReport += `- ${g.label}${dateText}: ${goalText}\n`;
+                });
+                html += '<div class="h-px bg-gray-200 my-4"></div>';
+                textReport += "\n";
+            } else {
+                 html += '<p class="text-red-600 font-semibold mb-4">Goal Setting (Page 3) has not been completed.</p>';
+            }
+
+            // --- WEEKLY PLAN SUMMARY ---
+            if (data.weeklyPlan.length > 0) {
+                html += '<h3 class="text-xl font-bold text-indigo-700 mb-3 border-b pb-1">4. Weekly Plan Summary</h3>';
+                textReport += "4. WEEKLY PLAN SUMMARY\n";
+                data.weeklyPlan.forEach(p => {
+                    const dateText = p.date ? ` (${p.date})` : '';
+                    const planText = p.plan || "N/A (No plan written)";
+                    html += `<p class="ml-2 mt-1"><strong class="text-indigo-900">${p.day}${dateText}:</strong> ${planText}</p>`;
+                    textReport += `- ${p.day}${dateText}: ${planText}\n`;
+                });
+                html += '<div class="h-px bg-gray-200 my-4"></div>';
+                textReport += "\n";
+            } else {
+                 html += '<p class="text-red-600 font-semibold mb-4">Weekly Plan (Page 4) has not been completed.</p>';
+            }
+
+            // --- QUIZ RESULTS SUMMARY (ENHANCED) ---
+            if (data.quizResults.length > 0) {
+                html += '<h3 class="text-xl font-bold text-indigo-700 mb-3 border-b pb-1">6. Mental Quiz Results</h3>';
+                textReport += "6. MENTAL QUIZ RESULTS\n";
+                let correctCount = 0;
+                data.quizResults.forEach((r, index) => {
+                    const resultStyle = r.isCorrect ? 'text-green-600' : 'text-red-600';
+                    const resultText = r.isCorrect ? 'CORRECT' : 'INCORRECT';
+                    if (r.isCorrect) correctCount++;
+                    
+                    html += `<p class="ml-2 mt-2"><strong>Q${index + 1}.</strong> ${r.question}</p>`;
+                    html += `<p class="ml-4 italic ${resultStyle}">Selected: ${r.selectedText} (${resultText})</p>`;
+                    textReport += `Q${index + 1}. ${r.question}\nSelected: ${r.selectedText} (${resultText})\n`;
+                    
+                    // Logic: Provide correction if answer was incorrect
+                    if (!r.isCorrect) {
+                        // Find the original question data from the source
+                        const originalQuestion = quizData.find(q => q.question === r.question);
+                        if (originalQuestion) {
+                            // Find the correct option
+                            const correctAnswer = originalQuestion.options.find(o => o.isCorrect);
+                            
+                            if (correctAnswer) {
+                                // Add correction to HTML
+                                html += `<div class="ml-4 mt-1 p-3 bg-yellow-100 rounded-lg border border-yellow-300 text-sm">`;
+                                html += `<p class="font-bold text-yellow-800">Correct Answer:</p>`;
+                                html += `<p class="mt-1">${correctAnswer.text}</p>`;
+                                html += `<p class="mt-2 font-bold text-gray-800">Explanation:</p>`;
+                                html += `<p>${correctAnswer.explanation}</p>`;
+                                html += `</div>`;
+
+                                // Add correction to plain text report
+                                textReport += `CORRECT ANSWER: ${correctAnswer.text}\n`;
+                                textReport += `EXPLANATION: ${correctAnswer.explanation}\n`;
+                            }
+                        }
+                    }
+                });
+                
+                html += `<p class="mt-4 text-lg font-bold">Total Correct Answers: ${correctCount} / ${quizData.length}</p>`;
+                textReport += `\nTotal Correct Answers: ${correctCount} / ${quizData.length}\n`;
+            } else {
+                 html += '<p class="text-red-600 font-semibold mb-4">Mental Quiz (Page 6) has not been completed.</p>';
+            }
+            
+            // If no data, show a default message
+            if (data.goals.length === 0 && data.weeklyPlan.length === 0 && data.quizResults.length === 0) {
+                 html = '<p class="text-center text-xl font-semibold text-gray-700 p-8">No data has been entered yet. Please fill out the goal setting, weekly plan, and mental quiz pages to generate a summary.</p>';
+            }
+            
+            summaryContentDiv.innerHTML = html;
+            // Store the plain text report in the button for copying
+            document.getElementById('copyReportButton').dataset.reportText = textReport;
+        }
+
+        async function copySummary() {
+            const reportText = document.getElementById('copyReportButton').dataset.reportText;
+            if (!reportText || reportText.trim().length < 100) {
+                 // Try to re-render summary if it looks empty
+                 renderSummary();
+                 const reRenderedText = document.getElementById('copyReportButton').dataset.reportText;
+
+                 if (!reRenderedText || reRenderedText.trim().length < 100) {
+                    copyMessage.textContent = "Error: Report content is empty. Please fill out the forms and try again.";
+                    copyMessage.classList.remove('bg-green-100', 'text-green-700');
+                    copyMessage.classList.add('bg-red-100', 'text-red-700');
+                    copyMessage.style.display = 'block';
+                    setTimeout(() => {
+                        copyMessage.style.display = 'none';
+                        copyMessage.classList.add('bg-green-100', 'text-green-700');
+                        copyMessage.classList.remove('bg-red-100', 'text-red-700');
+                        copyMessage.textContent = "Report copied to clipboard!";
+                    }, 4000);
+                    return;
+                 }
+            }
+
+            try {
+                // 1. Use modern Clipboard API (navigator.clipboard)
+                await navigator.clipboard.writeText(reportText);
+
+                copyMessage.textContent = "Report copied to clipboard!";
+                copyMessage.style.display = 'block';
+                setTimeout(() => copyMessage.style.display = 'none', 3000);
+
+            } catch (err) {
+                // 2. Fallback using execCommand (needed in certain iframe environments)
+                console.warn('Clipboard API failed, falling back to execCommand.', err);
+                const textArea = document.createElement("textarea");
+                textArea.value = reportText;
+                
+                // Make the text area invisible and not interfere with the page layout
+                textArea.style.position = "fixed";
+                textArea.style.top = "0";
+                textArea.style.left = "0";
+                textArea.style.width = "1px";
+                textArea.style.height = "1px";
+                textArea.style.padding = "0";
+                textArea.style.border = "none";
+                textArea.style.outline = "none";
+                textArea.style.boxShadow = "none";
+                textArea.style.background = "transparent";
+
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+
+                try {
+                    const successful = document.execCommand('copy');
+                    if (successful) {
+                        copyMessage.textContent = "Report copied to clipboard! (Fallback)";
+                        copyMessage.style.display = 'block';
+                        setTimeout(() => copyMessage.style.display = 'none', 3000);
+                    } else {
+                        throw new Error("execCommand failed.");
+                    }
+                } catch (err2) {
+                    console.error('Final copy fallback failed:', err2);
+                    copyMessage.textContent = "Error: Could not copy report. Please copy the text manually.";
+                    copyMessage.classList.remove('bg-green-100', 'text-green-700');
+                    copyMessage.classList.add('bg-red-100', 'text-red-700');
+                    copyMessage.style.display = 'block';
+                    setTimeout(() => {
+                        copyMessage.style.display = 'none';
+                        copyMessage.classList.add('bg-green-100', 'text-green-700');
+                        copyMessage.classList.remove('bg-red-100', 'text-red-700');
+                    }, 4000);
+                } finally {
+                    document.body.removeChild(textArea);
+                }
+            }
+        }
+
+        // Make copySummary globally accessible (needed because it's called via inline onclick)
+        window.copySummary = copySummary;
+
+        // --- Utility Functions ---
+
+        function resetProgram() {
+            // 1. Reset all form inputs (date and textarea)
+            document.querySelectorAll('input[type="date"], textarea').forEach(input => input.value = '');
+
+            // 2. Reset quiz state
+            currentQuestionIndex = 0;
+            quizAnswers = []; // Clear stored answers
+            
+            if (currentPage === 6) {
+                renderQuestion(currentQuestionIndex);
+            }
+            
+            // 3. Reset all quiz buttons/styles across the app
+            document.querySelectorAll('.quiz-option').forEach(btn => {
+                btn.disabled = false;
+                btn.classList.remove('selected-correct', 'selected-incorrect', 'font-bold', 'opacity-70');
+            });
+            document.querySelectorAll('[id^="explanation-"]').forEach(div => div.style.display = 'none');
+            
+            // 4. Navigate to Page 1
+            updatePage(1);
+
+            // 5. Show reset message
+            resetMessage.style.display = 'block';
+            copyMessage.style.display = 'none';
+            setTimeout(() => resetMessage.style.display = 'none', 3000);
+        }
+
+        // --- Navigation Logic ---
+
+        function updatePage(newPage) {
+            // Ensure page number is within limits
+            if (newPage < 1 || newPage > pages.length) return;
+
+            // Hide all pages and remove 'active' class to reset animation
+            allContentPages.forEach(content => {
+                content.classList.remove('active');
+                content.style.display = 'none';
+            });
+
+            // Update page number
+            currentPage = newPage;
+
+            // ** Conditional Page Actions **
+            if (currentPage === 6) {
+                renderQuestion(currentQuestionIndex);
+            } else if (currentPage === 7) {
+                renderSummary(); // Generate summary when reaching the final page
+            } else {
+                // Reset quiz if we navigate away from page 6
+                currentQuestionIndex = 0;
+            }
+
+
+            // Show new page
+            const newContent = document.getElementById(pages[currentPage - 1].id);
+            if (newContent) {
+                newContent.style.display = 'block';
+                // Add a small delay for the fade/slide animation
+                setTimeout(() => {
+                    newContent.classList.add('active');
+                }, 10);
+            }
+            
+            // Update subtitle
+            subtitleElement.textContent = pages[currentPage - 1].subtitle;
+
+            // Update navigation buttons
+            navButtons.forEach(btn => {
+                const pageNum = parseInt(btn.dataset.page);
+                btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-lg');
+                btn.classList.add('bg-gray-200', 'text-gray-600', 'hover:bg-gray-300');
+                btn.disabled = false;
+                
+                if (pageNum > pages.length) {
+                     btn.disabled = true;
+                     btn.classList.remove('hover:bg-gray-300');
+                     btn.classList.add('cursor-not-allowed');
+                } else {
+                     btn.classList.remove('cursor-not-allowed');
+                }
+
+                if (pageNum === currentPage) {
+                    btn.classList.add('bg-indigo-600', 'text-white', 'shadow-lg');
+                    btn.classList.remove('bg-gray-200', 'text-gray-600', 'hover:bg-gray-300');
+                }
+            });
+
+            // Control next/previous buttons
+            prevButton.disabled = currentPage === 1;
+            nextButton.disabled = currentPage === pages.length;
+
+            prevButton.classList.toggle('bg-gray-500', prevButton.disabled);
+            prevButton.classList.toggle('bg-gray-200', !prevButton.disabled);
+            prevButton.classList.toggle('hover:bg-gray-300', !prevButton.disabled);
+
+
+            if (nextButton.disabled) {
+                nextButton.textContent = 'Program Completed!';
+                nextButton.classList.remove('bg-indigo-500', 'hover:bg-indigo-600');
+                nextButton.classList.add('bg-gray-400');
+            } else {
+                nextButton.textContent = 'Next Step →';
+                nextButton.classList.remove('bg-gray-400');
+                nextButton.classList.add('bg-indigo-500', 'hover:bg-indigo-600');
+            }
+        }
+
+        // Event Listeners
+        nextButton.addEventListener('click', () => updatePage(currentPage + 1));
+        prevButton.addEventListener('click', () => updatePage(currentPage - 1));
+        resetButton.addEventListener('click', resetProgram);
+
+        navButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const page = parseInt(e.target.dataset.page);
+                updatePage(page);
+            });
+        });
+
+        // Initialize on load (Immediate call since script is at the bottom)
+        updatePage(1); 
+    </script>
+
+</body>
+</html>
